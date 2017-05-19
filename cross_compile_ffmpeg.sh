@@ -1742,7 +1742,7 @@ build_intel_qsv=y
 original_cflags='-mtune=generic -O3' #  be careful, these override lots of stuff in makesfiles :| can't use mtune=core2 since it bworks it for some cpu's
 # if you specify a march it needs to first so x264's configure will use it :|
 build_x264_with_libav=n
-ffmpeg_git_checkout_version=
+ffmpeg_git_checkout_version=boom.tv
 build_ismindex=n
 enable_gpl=y
 
