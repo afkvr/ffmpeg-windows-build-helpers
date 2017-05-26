@@ -126,14 +126,14 @@ pick_compiler_flavors() {
     fi
     cat <<'EOF'
 What version of MinGW-w64 would you like to build or update?
-  1. Both Win32 and Win64
+  1. Both Win32 and Win64 - selected automatically -
   2. Win32 (32-bit only)
-  3. Win64 (64-bit only) - selected automatically -
+  3. Win64 (64-bit only)
   4. Exit
 EOF
     echo -n 'Input your choice [1-4]: '
     # read compiler_flavors
-    compiler_flavors="3"
+    compiler_flavors="1"
   done
   case "$compiler_flavors" in
   1 ) compiler_flavors=multi ;;
@@ -1728,7 +1728,7 @@ fi
 
 # variables with their defaults
 build_ffmpeg_static=y
-build_ffmpeg_shared=n
+build_ffmpeg_shared=y
 build_dvbtee=n
 build_libmxf=n
 build_mp4box=n
@@ -1846,6 +1846,10 @@ if [[ $compiler_flavors == "multi" || $compiler_flavors == "win32" ]]; then
   cd win32
     build_dependencies
     build_apps
+
+    # Move the *.lib files to the right directory
+    rm -rf ffmpeg_git_with_fdk_aac_shared.installed/lib/*
+    mv ffmpeg_git_with_fdk_aac_shared.installed/bin/*.lib ffmpeg_git_with_fdk_aac_shared.installed/lib
   cd ..
 fi
 
@@ -1864,6 +1868,10 @@ if [[ $compiler_flavors == "multi" || $compiler_flavors == "win64" ]]; then
   cd x86_64
     build_dependencies
     build_apps
+
+    # Move the *.lib files to the right directory
+    rm -rf ffmpeg_git_with_fdk_aac_shared.installed/lib/*
+    mv ffmpeg_git_with_fdk_aac_shared.installed/bin/*.lib ffmpeg_git_with_fdk_aac_shared.installed/lib
   cd ..
 fi
 
