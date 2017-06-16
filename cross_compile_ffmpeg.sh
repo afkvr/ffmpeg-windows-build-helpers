@@ -1133,11 +1133,15 @@ build_sdl() {
 }
 
 build_sdl2() {
+
   # apparently ffmpeg expects prefix-sdl-config not sdl-config that they give us, so rename...
   export CFLAGS=-DDECLSPEC=  # avoid SDL trac tickets 939 and 282, and not worried about optimizing yet...
-  download_and_unpack_file http://libsdl.org/release/SDL2-2.0.5.tar.gz
+  #download_and_unpack_file http://libsdl.org/release/SDL2-2.0.5.tar.gz
 
-  cd SDL2-2.0.5
+  # Use our own SDL2 version
+  do_git_checkout https://github.com/afkvr/boom_sdl2.git
+
+  cd boom_sdl2_git
      generic_configure
      # apply_patch https://raw.githubusercontent.com/rdp/ffmpeg-windows-build-helpers/master/patches/sdl2.xinput.diff mingw-w64 master needs it?
      do_make_and_make_install
