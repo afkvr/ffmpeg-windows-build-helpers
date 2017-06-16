@@ -1854,6 +1854,7 @@ if [[ $compiler_flavors == "multi" || $compiler_flavors == "win32" ]]; then
     # Move the *.lib files to the right directory
     rm -rf ffmpeg_git_with_fdk_aac_shared.installed/lib/*
     mv ffmpeg_git_with_fdk_aac_shared.installed/bin/*.lib ffmpeg_git_with_fdk_aac_shared.installed/lib
+    mv ffmpeg_git_with_fdk_aac_shared/icon.bmp ffmpeg_git_with_fdk_aac_shared.installed/bin
   cd ..
 fi
 
@@ -1876,6 +1877,7 @@ if [[ $compiler_flavors == "multi" || $compiler_flavors == "win64" ]]; then
     # Move the *.lib files to the right directory
     rm -rf ffmpeg_git_with_fdk_aac_shared.installed/lib/*
     mv ffmpeg_git_with_fdk_aac_shared.installed/bin/*.lib ffmpeg_git_with_fdk_aac_shared.installed/lib
+    mv ffmpeg_git_with_fdk_aac_shared/icon.bmp ffmpeg_git_with_fdk_aac_shared.installed/bin
   cd ..
 fi
 
